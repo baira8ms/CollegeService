@@ -1,12 +1,12 @@
 package com.spring.examples.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.examples.jpa.pojo.Student;
+import com.spring.examples.beans.StudentDTO;
 import com.spring.examples.service.CollageService;
 
 @RestController
@@ -17,7 +17,7 @@ public class CollegeController {
 	CollageService collageService;
 
 	@RequestMapping(value = "/{studentId}", method = RequestMethod.GET)
-	public Student getAllStudents(@RequestParam String studentId) {
-		return (Student) collageService.getStudentDetails(studentId);
+	public StudentDTO getAllStudents(@PathVariable String studentId) {
+		return (StudentDTO) collageService.getStudentDetails(studentId);
 	}
 }
